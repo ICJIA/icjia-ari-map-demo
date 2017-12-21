@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Illinois from './Illinois.vue';
+import Illinois from './components/home/Illinois.vue';
 import 'lodash';
 import 'bootstrap';
 import jQuery from 'jquery';

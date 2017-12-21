@@ -4,9 +4,18 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const moment = require('moment-timezone');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+
+let banner = 'Webpack build information: ' +
+    '\n' + moment().tz("America/Chicago").format("dddd, MMMM Do YYYY, h:mm:ss a") +
+    '\nhttps://github.com/ICJIA/icjia-fusioncharts-webpack-vue-injection' +
+    '\nARI Map Injection Test' +
+    '\ncja.irc@illinois.gov'
 
 module.exports = {
-    entry: './src/main.js',
+    entry: './vue/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
@@ -152,8 +161,18 @@ if (process.env.NODE_ENV === 'production') {
             sourceMap: true,
             parallel: true
         }),
+        new webpack.BannerPlugin({
+            banner: banner + "\nname:[name]\nfilebase:[filebase]\nfile:[file]",
+            entryOnly: true,
+        }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
+    ])
+}
+
+if (process.env.REPORT_ENV === 'report') {
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new BundleAnalyzerPlugin()
     ])
 }
