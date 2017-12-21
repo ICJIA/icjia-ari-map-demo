@@ -10,7 +10,7 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 
 let banner = 'Webpack build information: ' +
     '\n' + moment().tz("America/Chicago").format("dddd, MMMM Do YYYY, h:mm:ss a") +
-    '\nhttps://github.com/ICJIA/icjia-fusioncharts-webpack-vue-injection' +
+    '\nhttps://github.com/ICJIA/icjia-ari-map-demo' +
     '\nARI Map Injection Test' +
     '\ncja.irc@illinois.gov'
 
