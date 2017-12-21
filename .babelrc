@@ -1,6 +1,11 @@
 {
-  "presets": [
-    ["env", { "modules": false }],
-    "stage-3"
-  ]
+    "presets": [
+        ["env",
+            {
+                "modules": false,
+                "targets": { "node": "6.9.0", "uglify": true },
+            }
+        ],
+        "stage-3"
+    ]
 }

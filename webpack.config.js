@@ -143,7 +143,7 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new CleanWebpackPlugin(path.resolve(__dirname, './dist')),
         new webpack.optimize.UglifyJsPlugin({
-            // sourceMap: true,
+            sourceMap: true,
             compress: {
                 warnings: false,
                 drop_console: true

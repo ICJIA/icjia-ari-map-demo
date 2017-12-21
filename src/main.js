@@ -5,7 +5,7 @@ import 'bootstrap';
 import jQuery from 'jquery';
 
 
-// import FusionCharts from 'fusioncharts'
+import FusionCharts from 'fusioncharts'
 // import VueFusionCharts from 'vue-fusioncharts';
 
 // import Charts from 'fusioncharts/fusioncharts.charts'
