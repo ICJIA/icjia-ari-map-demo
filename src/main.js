@@ -5,16 +5,16 @@ import 'bootstrap';
 import jQuery from 'jquery';
 
 
+// import FusionCharts from 'fusioncharts'
+// import VueFusionCharts from 'vue-fusioncharts';
 
-import VueFusionCharts from 'vue-fusioncharts';
-import FusionCharts from 'fusioncharts'
-import Charts from 'fusioncharts/fusioncharts.charts'
-import Maps from 'fusioncharts/fusioncharts.maps'
+// import Charts from 'fusioncharts/fusioncharts.charts'
+// import Maps from 'fusioncharts/fusioncharts.maps'
 import IllinoisMap from '../static/vendor/fusioncharts/maps/fusioncharts.illinois.js';
-Charts(FusionCharts);
-Maps(FusionCharts);
+// Charts(FusionCharts);
+// Maps(FusionCharts);
 IllinoisMap(FusionCharts);
-Vue.use(VueFusionCharts, VueFusionCharts);
+// Vue.use(VueFusionCharts,VueFusionCharts);
 
 var APPS = {
     Illinois
