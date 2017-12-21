@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
     entry: './src/main.js',
@@ -141,12 +142,15 @@ if (process.env.NODE_ENV === 'production') {
             }
         }),
         new CleanWebpackPlugin(path.resolve(__dirname, './dist')),
-        new webpack.optimize.UglifyJsPlugin({
-            // sourceMap: true,
-            compress: {
-                warnings: false,
-                drop_console: true
-            }
+        new UglifyJsPlugin({
+            uglifyOptions: {
+                compress: {
+                    warnings: false,
+                    drop_console: true
+                }
+            },
+            sourceMap: true,
+            parallel: true
         }),
         new webpack.LoaderOptionsPlugin({
             minimize: true
