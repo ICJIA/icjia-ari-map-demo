@@ -39,16 +39,14 @@ function renderAppInElement(el) {
         el,
         render(createElem) {
             return createElem(App, {
-                // attrs: props
+                attrs: props
             });
         }
     })
 }
 
 
-
-
-
+// Loop through the vue-root selectors
 document.addEventListener("DOMContentLoaded", function(event) {
     var roots = document.querySelectorAll('.__vue-root'),
         i;
