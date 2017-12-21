@@ -235,7 +235,7 @@
                         "includeValueInLabels": "1",
                         "baseFontSize": "9",
                         "showToolTip": "1",
-                        "showLabels": "1",
+                        "showLabels": "0",
                         "includeNameInLabels": "0",
                         "showMarkerLabels": "1",
                         "fontBold": "1",
@@ -260,13 +260,13 @@
                                 "minValue": "0",
                                 "maxValue": "500",
                                 "displayValue": "ARI SFY17 sites",
-                                "color": "#5a53f2"
+                                "color": "#2e2a7a"
 
                             }, {
                                 "minValue": "500",
                                 "maxValue": "1000",
                                 "displayValue": "ARI planning grant counties",
-                                "color": "#2e2a7a"
+                                "color": "#5a53f2"
 
                             },
 
