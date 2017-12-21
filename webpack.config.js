@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: './src/main.js',
@@ -26,21 +27,35 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?.*$|$)/,
                 loader: 'file-loader'
             },
-            {
-                test: /\.scss$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ],
-            },
+            // {
+            //     test: /\.scss$/,
+            //     use: [
+            //         'vue-style-loader',
+            //         'css-loader',
+            //         'sass-loader'
+            //     ],
+            // },
+            // {
+            //     test: /\.sass$/,
+            //     use: [
+            //         'vue-style-loader',
+            //         'css-loader',
+            //         'sass-loader?indentedSyntax'
+            //     ],
+            // },
             {
                 test: /\.sass$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader',
-                    'sass-loader?indentedSyntax'
-                ],
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: 'css-loader!sass-loader?indentedSyntax'
+                })
+            },
+            {
+                test: /\.(scss|css)$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: 'css-loader!sass-loader'
+                })
             },
             {
                 test: /\.vue$/,
@@ -60,8 +75,9 @@ module.exports = {
                             'css-loader',
                             'sass-loader?indentedSyntax'
                         ]
-                    }
-                    // other vue-loader options go here
+                    },
+                    extractCSS: true
+                        // other vue-loader options go here
                 }
             },
             {
@@ -93,6 +109,10 @@ module.exports = {
             to: 'static',
             ignore: ['.*']
         }]),
+        new ExtractTextPlugin({
+            filename: './build.css',
+            allChunks: true
+        }),
     ],
     resolve: {
         alias: {
@@ -120,10 +140,12 @@ if (process.env.NODE_ENV === 'production') {
                 NODE_ENV: '"production"'
             }
         }),
+        new CleanWebpackPlugin(path.resolve(__dirname, './dist')),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
+            // sourceMap: true,
             compress: {
-                warnings: false
+                warnings: false,
+                drop_console: true
             }
         }),
         new webpack.LoaderOptionsPlugin({

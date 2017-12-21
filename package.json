@@ -15,10 +15,12 @@
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.3.0",
     "expose-loader": "^0.7.4",
+    "extract-text-webpack-plugin": "^3.0.2",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "lorem-ipsum": "^1.0.4",
     "popper.js": "^1.12.9",
+    "style-loader": "^0.19.1",
     "vue": "^2.5.11"
   },
   "browserslist": [
