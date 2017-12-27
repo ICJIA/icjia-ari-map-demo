@@ -5,6 +5,7 @@ var CleanWebpackPlugin = require("clean-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const moment = require("moment-timezone");
+var HtmlWebpackPlugin = require ('html-webpack-plugin')
 var BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 
@@ -22,8 +23,9 @@ module.exports = {
   entry: "./vue/main.js",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    publicPath: "/dist/",
-    filename: "build.js"
+    publicPath: "",
+    // publicPath: "/dist/",
+    filename: "js/build.js"
   },
   module: {
     rules: [
@@ -109,6 +111,65 @@ module.exports = {
       "window.jQuery": "jquery",
       Popper: ["popper.js", "default"]
     }),
+    new HtmlWebpackPlugin({
+      // Required
+      inject: false,
+      template: './index.ejs',
+      // template: 'node_modules/cschweda-webpack-template/index.ejs',
+
+      // Optional
+      minify: {
+        collapseWhitespace: true, 
+        caseSensitive: true
+      },
+      appMountId: 'Illinois',
+      appMountClass: '__vue-root',
+      baseHref: '/',
+      meta: [
+        {
+          name: 'description',
+          content: 'A better default template for html-webpack-plugin.'
+        }
+      ],
+      mobile: true,
+      lang: 'en-US',
+      links: [
+        
+      ],
+      inlineManifestWebpackName: 'webpackManifest',
+      scripts: [
+        
+        
+      ],
+      headscripts: [
+        'https://unpkg.com/fusioncharts/fusioncharts.js',
+        'https://unpkg.com/fusioncharts/fusioncharts.charts.js',
+        'https://unpkg.com/fusioncharts/fusioncharts.maps.js',
+        'https://unpkg.com/vue-fusioncharts/dist/vue-fusioncharts.min.js'
+        
+      ],
+      postscripts: [
+        
+      ],
+      title: 'My Webpack App',
+      buildInfo: [
+        {
+          Build: moment().tz("America/Chicago").format("dddd, MMMM Do YYYY, h:mm:ss a") + '\n',
+          // npm i moment-timezone --save-dev
+          // let moment = require('moment-timezone')
+          GitHub: 'https://github.com/ICJIA/icjia-ari-map-demo' + '\n',
+          Contact: 'christopher.schweda@illinois.gov' + '\n'
+        }
+      ],
+      window: {
+        env: {
+          
+        }
+      }
+
+      // And any other config options from html-webpack-plugin:
+      // https://github.com/ampedandwired/html-webpack-plugin#configuration
+    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
     new CopyWebpackPlugin([
@@ -119,7 +180,7 @@ module.exports = {
       }
     ]),
     new ExtractTextPlugin({
-      filename: "./build.css",
+      filename: "css/build.css",
       allChunks: true
     })
   ],
