@@ -91,12 +91,7 @@
     <% if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
   	<script<% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script>
     <% } %>
-<!--
-    <% if (Array.isArray(htmlWebpackPlugin.options.buildInfo)) { %>
-    <% for (item of htmlWebpackPlugin.options.buildInfo) { %>
-    <% for (key in item) { %> <%= key %>: <%= item[key] %> <% }%>
-    <% } %>
-  <% } %>
--->
+
   </body>
 </html>
+<!--<% if (Array.isArray(htmlWebpackPlugin.options.buildInfo)) { %><% for (item of htmlWebpackPlugin.options.buildInfo) { %><% for (key in item) { %> <%= key %>: <%= item[key] %><% }%><% } %><% } %>-->
