@@ -58,6 +58,7 @@
 <script>
   const loremIpsum = require('lorem-ipsum')
   import DisplayAboutRedeploy from './DisplayAboutRedeploy.vue'
+  require('es6-promise').polyfill();
   import axios from 'axios'
   // import {
   //     EventBus

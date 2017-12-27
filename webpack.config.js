@@ -142,7 +142,6 @@ module.exports = {
         
       ],
       headscripts: [
-        'https://cdn.jsdelivr.net/bluebird/3.5.0/bluebird.min.js',
         'https://unpkg.com/fusioncharts/fusioncharts.js',
         'https://unpkg.com/fusioncharts/fusioncharts.charts.js',
         'https://unpkg.com/fusioncharts/fusioncharts.maps.js',
