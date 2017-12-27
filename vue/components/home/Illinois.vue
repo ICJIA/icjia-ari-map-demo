@@ -178,10 +178,8 @@
 
       },
       renderFactSheet: function (str) {
-
         this.countyMetaData.factSheet = str
         this.$forceUpdate();
-
       },
 
       setChartEvents: function (vm) {
