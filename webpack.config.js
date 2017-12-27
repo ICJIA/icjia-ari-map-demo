@@ -153,12 +153,12 @@ module.exports = {
       ],
       title: 'My Webpack App',
       buildInfo: [
-        {
+        { 
           Build: moment().tz("America/Chicago").format("dddd, MMMM Do YYYY, h:mm:ss a") + '\n',
           // npm i moment-timezone --save-dev
           // let moment = require('moment-timezone')
           GitHub: 'https://github.com/ICJIA/icjia-ari-map-demo' + '\n',
-          Contact: 'christopher.schweda@illinois.gov' + '\n'
+          Contact: 'cja.irc@illinois.gov' + '\n'
         }
       ],
       window: {
