@@ -151,7 +151,7 @@ module.exports = {
       postscripts: [
         
       ],
-      title: 'My Webpack App',
+      title: 'Adult Redeploy Illinois Map Demo',
       buildInfo: [
         { 
           Build: moment().tz("America/Chicago").format("dddd, MMMM Do YYYY, h:mm:ss a") + '\n',
