@@ -1,41 +1,45 @@
 <template>
-        <section>
-           
-        <div style="height: 50px"></div>
-        <div style="background: #fff; border-top: 1px solid #bbb;border-bottom: 1px solid #bbb;">
-            <div class="container-fluid" style="padding: 50px 30px 50px 30px">
-                <div class="row">
-                    <div class="col-md-6 hidden-xs hidden-sm">
-                        
-                        <div id="chart-container">Map will load here!</div>
-                    </div>
-                    <div class="col-md-6">
-                        
-                        
-                          
-                          <div class="text-center" v-if="visibility" style="margin-top: 20px">
-                          <select v-model="selected" @change="getSelection($event)" style="width: 100%" class="select-style">
-                                <option disabled>Select your option</option>
-                                <option v-for="data in selectData" :value="data.id">{{ data.title }}</option>
-                            </select>
-                        </div>
-                        
-                       <display-about-redeploy v-if="!visibility"></display-about-redeploy> 
-    
-                    <display-fact-sheet :countyMetaData="countyMetaData" v-if="visibility"></display-fact-sheet>
-                    <div class="about-toggle" v-if="visibility"><a v-on:click='toggleViz'>About Adult Redeploy Illinois&nbsp;&raquo;</a></div>
-    
-                    <div class="about-toggle"  v-if="!visibility"><a v-on:click='getFirstFactSheet'>Display Fact Sheets&nbsp;&raquo;</a></div>
-    
-    
-    
-                    </div>
-                </div>
+  <section>
+
+    <div style="height: 50px"></div>
+    <div style="background: #fff; border-top: 1px solid #bbb;border-bottom: 1px solid #bbb;">
+      <div class="container-fluid" style="padding: 50px 30px 50px 30px">
+        <div class="row">
+          <div class="col-md-6 hidden-xs hidden-sm">
+
+            <div id="chart-container">Map will load here!</div>
+          </div>
+          <div class="col-md-6">
+
+
+
+            <div class="text-center" v-if="visibility" style="margin-top: 20px">
+              <select v-model="selected" @change="getSelection($event)" style="width: 100%" class="select-style">
+                <option disabled>Select your option</option>
+                <option v-for="data in selectData" :value="data.id">{{ data.title }}</option>
+              </select>
             </div>
+
+            <display-about-redeploy v-if="!visibility"></display-about-redeploy>
+
+            <display-fact-sheet :countyMetaData="countyMetaData" v-if="visibility"></display-fact-sheet>
+            <div class="about-toggle" v-if="visibility">
+              <a v-on:click='toggleViz'>About Adult Redeploy Illinois&nbsp;&raquo;</a>
+            </div>
+
+            <div class="about-toggle" v-if="!visibility">
+              <a v-on:click='getFirstFactSheet'>Display Fact Sheets&nbsp;&raquo;</a>
+            </div>
+
+
+
+          </div>
         </div>
-        <div style="height: 50px"></div>
-        </section>
-          </template>
+      </div>
+    </div>
+    <div style="height: 50px"></div>
+  </section>
+</template>
 
 <script>
     const loremIpsum = require('lorem-ipsum')
