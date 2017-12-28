@@ -25,7 +25,7 @@ module.exports = {
     path: path.resolve(__dirname, "./dist/"),
     publicPath: "",
     // publicPath: "/dist/",
-    filename: "js/build.js"
+    filename: "js/webpack.js"
   },
   module: {
     rules: [
@@ -180,7 +180,7 @@ module.exports = {
       }
     ]),
     new ExtractTextPlugin({
-      filename: "css/build.css",
+      filename: "css/webpack.css",
       allChunks: true
     })
   ],
