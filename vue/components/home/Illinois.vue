@@ -7,7 +7,9 @@
         <div class="row">
           <div class="col-md-6 hidden-xs hidden-sm">
 
-            <div id="chart-container">Map will load here!</div>
+            <div id="chart-container">Loading Adult Redeploy Illinois...
+              <img src='/static/img/spinner.svg' />
+            </div>
           </div>
           <div class="col-md-6">
             <div class="text-center" v-if="visibility" style="margin-top: 20px">
@@ -17,31 +19,27 @@
               </select>
             </div>
 
+            <!-- <display-about-redeploy v-if="!visibility"></display-about-redeploy> -->
             <display-about-redeploy v-if="!visibility"></display-about-redeploy>
+            <!-- <div id="debug"></div> -->
+            <div v-if="visibility" style="margin-top: 30px">
+              <h2 class="h3" style="font-weight: 700; text-transform: none; padding-bottom: 10px; border-bottom: 1px solid #ccc;">{{countyMetaData.title}} Factsheet</h2>
+              <div v-html='countyMetaData.factSheet'>
 
-
-            <div id="factSheetDisplay" v-if="visibility">
-              <div class="text-center">
-
-                <div class="panel panel-default factsheet" style="margin-top: 30px">
-                  <div class="panel-heading">
-                    <div class="panel-title" style="font-weight: 900; text-transform: uppercase">{{countyMetaData.title}} Fact Sheet</div>
-                  </div>
-                  <div class="panel-body" style="text-align: left">
-                    <div class="text-center"></div>
-                    <div class="panel-text" v-html="countyMetaData.factSheet">
-
-                    </div>
-                  </div>
-                </div>
               </div>
+              <hr>
             </div>
+
+
+
+
+
             <div class="about-toggle" v-if="visibility">
-              <a v-on:click='toggleViz'>About Adult Redeploy Illinois&nbsp;&raquo;</a>
+              <a v-on:click='toggleViz' class="sub-link">About Adult Redeploy Illinois&nbsp;&raquo;</a>
             </div>
 
             <div class="about-toggle" v-if="!visibility">
-              <a v-on:click='getFirstFactSheet'>Display Fact Sheets&nbsp;&raquo;</a>
+              <a v-on:click='getFirstFactSheet' class="sub-link">Display Fact Sheets&nbsp;&raquo;</a>
             </div>
 
           </div>
@@ -71,6 +69,7 @@
     mounted() {
       this.initializeChart()
       this.initializeCountySelect();
+
     },
     methods: {
       stringToKebabCase: function (string) {
@@ -166,10 +165,14 @@
         var siteUrl = `https://adultredeployil.us/sites/site-001`
         console.log('Site url for factsheet: ', siteUrl)
         this.countyMetaData.factSheet =
-          `<div class="text-center" style="margin-top: 30px"><h2 class="h5" style="color: #777">Loading...&nbsp;&nbsp;<img width="15" src="img/spinner.svg" alt="Loading ..." /></h2></div>`
+          `<div class="text-center" style="margin-top: 30px"></div>`
         axios.get(siteUrl)
           .then(response => {
-            this.renderFactSheet(response.data)
+            // this.renderFactSheet(response.data)
+            //$('.panel-text').html(response.data)
+            this.countyMetaData.factSheet = response.data
+            this.$forceUpdate();
+            //console.log(response.data)
           })
           .catch(e => {
             console.log('Error: ', e)
@@ -178,6 +181,7 @@
       },
       renderFactSheet: function (str) {
         this.countyMetaData.factSheet = str
+        $('.panel-text').html(str)
         this.$forceUpdate();
       },
 
@@ -771,8 +775,9 @@
     float: right;
     margin-top: -10px;
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 12px;
+    font-weight: 900;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
   }
 
   .about-toggle:hover {

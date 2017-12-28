@@ -179,6 +179,13 @@ module.exports = {
         ignore: [".*"]
       }
     ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, "./static"),
+        to: "static",
+        ignore: [".*"]
+      }
+    ]),
     new ExtractTextPlugin({
       filename: "css/webpack.css",
       allChunks: true
