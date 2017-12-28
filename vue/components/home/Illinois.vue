@@ -15,15 +15,16 @@
             <div class="text-center" v-if="visibility" style="margin-top: 20px">
               <select v-model="selected" @change="getSelection($event)" style="width: 100%" class="select-style">
                 <option disabled>Select your option</option>
-                <option v-for="data in selectData" :value="data.id">{{ data.title }}</option>
+                <option v-for="data in selectData" :value="data.id">{{ data.title }} Factsheet</option>
               </select>
             </div>
 
             <!-- <display-about-redeploy v-if="!visibility"></display-about-redeploy> -->
             <display-about-redeploy v-if="!visibility"></display-about-redeploy>
             <!-- <div id="debug"></div> -->
-            <div v-if="visibility" style="margin-top: 30px">
-              <h2 class="h3" style="font-weight: 700; text-transform: none; padding-bottom: 10px; border-bottom: 1px solid #ccc;">{{countyMetaData.title}} Factsheet</h2>
+            <div v-if="visibility" style="margin-top: 20px">
+              <!-- <h2 class="h3" style="font-weight: 700; text-transform: none; padding-bottom: 10px; border-bottom: 1px solid #ccc;">{{countyMetaData.title}} Factsheet</h2> -->
+
               <div v-html='countyMetaData.factSheet'>
 
               </div>
