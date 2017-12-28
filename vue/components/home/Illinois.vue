@@ -1,7 +1,7 @@
 <template>
   <section>
 
-    <div style="height: 50px"></div>
+
     <div style="background: #fff; border-top: 1px solid #bbb;border-bottom: 1px solid #bbb;">
       <div class="container-fluid" style="padding: 50px 30px 50px 30px">
         <div class="row">
@@ -10,9 +10,6 @@
             <div id="chart-container">Map will load here!</div>
           </div>
           <div class="col-md-6">
-
-
-
             <div class="text-center" v-if="visibility" style="margin-top: 20px">
               <select v-model="selected" @change="getSelection($event)" style="width: 100%" class="select-style">
                 <option disabled>Select your option</option>
@@ -23,7 +20,7 @@
             <display-about-redeploy v-if="!visibility"></display-about-redeploy>
 
 
-            <div id="factSheetDisplay" v-if="visibility" >
+            <div id="factSheetDisplay" v-if="visibility">
               <div class="text-center">
 
                 <div class="panel panel-default factsheet" style="margin-top: 30px">
@@ -31,9 +28,9 @@
                     <div class="panel-title" style="font-weight: 900; text-transform: uppercase">{{countyMetaData.title}} Fact Sheet</div>
                   </div>
                   <div class="panel-body" style="text-align: left">
-                      <div class="text-center"></div>
+                    <div class="text-center"></div>
                     <div class="panel-text" v-html="countyMetaData.factSheet">
-                        
+
                     </div>
                   </div>
                 </div>
@@ -51,13 +48,13 @@
         </div>
       </div>
     </div>
-    <div style="height: 50px"></div>
   </section>
 </template>
 
 <script>
   const loremIpsum = require('lorem-ipsum')
   import DisplayAboutRedeploy from './DisplayAboutRedeploy.vue'
+  // Polyfill for IE
   require('es6-promise').polyfill();
   import axios from 'axios'
   // import {
@@ -167,8 +164,9 @@
         this.visibility = true;
         //var siteUrl = `https://adultredeployil.us/sites/` + this.stringToKebabCase(this.countyMetaData.title)
         var siteUrl = `https://adultredeployil.us/sites/site-001`
-        console.log('Site url for factsheet: ',siteUrl)
-        this.countyMetaData.factSheet = `<div class="text-center" style="margin-top: 30px"><h2 class="h5" style="color: #777">Loading...&nbsp;&nbsp;<img width="15" src="/static/img/spinner.svg" alt="Loading ..." /></h2></div>`
+        console.log('Site url for factsheet: ', siteUrl)
+        this.countyMetaData.factSheet =
+          `<div class="text-center" style="margin-top: 30px"><h2 class="h5" style="color: #777">Loading...&nbsp;&nbsp;<img width="15" src="img/spinner.svg" alt="Loading ..." /></h2></div>`
         axios.get(siteUrl)
           .then(response => {
             this.renderFactSheet(response.data)
@@ -781,6 +779,8 @@
     cursor: pointer;
   }
 
-  .loader {color: #bbb}
+  .loader {
+    color: #bbb
+  }
 
 </style>

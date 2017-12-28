@@ -5,7 +5,7 @@ var CleanWebpackPlugin = require("clean-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const moment = require("moment-timezone");
-var HtmlWebpackPlugin = require ('html-webpack-plugin')
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 var BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 
@@ -22,7 +22,7 @@ let banner =
 module.exports = {
   entry: "./vue/main.js",
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "./dist/"),
     publicPath: "",
     // publicPath: "/dist/",
     filename: "js/build.js"
@@ -105,66 +105,66 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-      Popper: ["popper.js", "default"]
-    }),
+    // new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jQuery: "jquery",
+    //   "window.jQuery": "jquery",
+    //   Popper: ["popper.js", "default"]
+    // }),
     new HtmlWebpackPlugin({
       // Required
       inject: false,
-      template: './index.ejs',
+      template: "./index.ejs",
+      // filename: './layouts/default.html',
       // template: 'node_modules/cschweda-webpack-template/index.ejs',
 
       // Optional
-      minify: {
-        collapseWhitespace: true, 
-        caseSensitive: true
-      },
-      appMountId: 'Illinois',
-      appMountClass: '__vue-root',
-      baseHref: '/',
+      // minify: {
+      //   collapseWhitespace: true,
+      //   caseSensitive: true
+      // },
+      appMountId: "Illinois",
+      appMountClass: "__vue-root",
+      baseHref: "/",
       meta: [
         {
-          name: 'description',
-          content: 'A better default template for html-webpack-plugin.'
+          name: "description",
+          content: "A better default template for html-webpack-plugin."
         }
       ],
       mobile: true,
-      lang: 'en-US',
+      lang: "en-US",
       links: [
-        
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       ],
-      inlineManifestWebpackName: 'webpackManifest',
+      inlineManifestWebpackName: "webpackManifest",
       scripts: [
-        
-        
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
       ],
       headscripts: [
-        'https://unpkg.com/fusioncharts/fusioncharts.js',
-        'https://unpkg.com/fusioncharts/fusioncharts.charts.js',
-        'https://unpkg.com/fusioncharts/fusioncharts.maps.js',
-        'https://unpkg.com/vue-fusioncharts/dist/vue-fusioncharts.min.js'
-        
+        "https://code.jquery.com/jquery-3.2.1.slim.js",
+        "https://unpkg.com/fusioncharts/fusioncharts.js",
+        "https://unpkg.com/fusioncharts/fusioncharts.charts.js",
+        "https://unpkg.com/fusioncharts/fusioncharts.maps.js"
+        // "https://unpkg.com/vue-fusioncharts/dist/vue-fusioncharts.min.js"
+        // "https://static.fusioncharts.com/code/latest/maps/fusioncharts.illinois.js"
       ],
-      postscripts: [
-        
-      ],
-      title: 'Adult Redeploy Illinois Map Demo',
+      postscripts: [],
+      title: "Adult Redeploy Illinois Map Demo",
       buildInfo: [
-        { 
-          Build: moment().tz("America/Chicago").format("dddd, MMMM Do YYYY, h:mm:ss a") + '\n',
+        {
+          Build:
+            moment()
+              .tz("America/Chicago")
+              .format("dddd, MMMM Do YYYY, h:mm:ss a") + "\n",
           // npm i moment-timezone --save-dev
           // let moment = require('moment-timezone')
-          GitHub: 'https://github.com/ICJIA/icjia-ari-map-demo' + '\n',
-          Contact: 'cja.irc@illinois.gov' + '\n'
+          GitHub: "https://github.com/ICJIA/icjia-ari-map-demo" + "\n",
+          Contact: "cja.irc@illinois.gov" + "\n"
         }
       ],
       window: {
-        env: {
-          
-        }
+        env: {}
       }
 
       // And any other config options from html-webpack-plugin:
@@ -174,8 +174,8 @@ module.exports = {
 
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, "./static"),
-        to: "static",
+        from: path.resolve(__dirname, "./vue/img"),
+        to: "img",
         ignore: [".*"]
       }
     ]),
@@ -186,7 +186,9 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      vue$: "vue/dist/vue.esm.js"
+      vue$: "vue/dist/vue.esm.js",
+      vendor: path.resolve(__dirname, "./vue/vendor/"),
+      img: path.resolve(__dirname, "./vue/img/")
     },
     extensions: ["*", ".js", ".vue", ".json"]
   },
