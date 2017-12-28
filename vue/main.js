@@ -48,3 +48,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     renderAppInElement(roots[i]);
   }
 });
+
+// Other javascript to run on load
+
+(function() {
+  console.log("Webpack js init");
+})();
