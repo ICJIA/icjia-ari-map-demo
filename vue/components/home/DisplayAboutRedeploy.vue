@@ -13,17 +13,22 @@
       evaluation processes with standardized performance measurements are required to confirm the effectiveness of services
       in reducing crime. </p>
 
-    <p>The ARI program is an example of a national best practice called
-      <strong>"performance incentive funding,"</strong> which other states are adopting in different ways. ARI is based on the successful
-      juvenile model which has been operating since 2004 with positive results. In the first three years of the juvenile
-      Redeploy Illinois program, four pilot sites reduced the number of youth sent to the Department of Juvenile Justice
-      by 51 percent (well above the 25 percent goal), which represents potential youth incarceration cost avoidance to the
-      state of nearly $19 million. </p>
+    <p>ARI is modeled after the successful juvenile Redeploy Illinois program operating since 2005. ARI is an example of the
+      “performance incentive funding” best practice, intended to align fiscal and operational responsibility for non-violent
+      offenders at the local level to produce better public safety at a lower cost. ARI draws on concepts of justice reinvestment,
+      such as using data to implement strategies that drive down corrections costs and free up dollars for investment in
+      community-based programs addressing recidivism.</p>
 
-    <p>Results expected with Adult Redeploy Illinois include reduced prison overcrowding (based on other states' experiences,
-      with no increase in crime); lowered cost to taxpayers ($24,899 a year for prison vs. less than $200 total for drug
-      school for first offenders or $3,500 on average for drug treatment); an end to the expensive vicious cycle of crime
-      and incarceration. </p>
+    <p>The goals of ARI are to:</p>
+    <ul>
+      <li>Reduce crime and recidivism in a way that is cost effective for taxpayers.</li>
+      <li>Provide financial incentives to counties or judicial circuits to create effective local-level evidence-based services.</li>
+      <li>Encourage the successful local supervision of eligible offenders and their reintegration into the locality.</li>
+      <li>Perform rigorous data collection and analysis to assess the outcomes of the programs.</li>
+    </ul>
+
+    <p>Results expected with Adult Redeploy Illinois include reduced prison overcrowding; lowered cost to taxpayers; an end
+      to the expensive vicious cycle of crime and incarceration. </p>
 
     <p>As of June 2017, Adult Redeploy Illinois has
       <strong>20 local sites</strong> operating
@@ -35,23 +40,25 @@
 </template>
 
 <script>
-    // import {
-    //     EventBus
-    // } from '../../event-bus.js';
-    export default {
-        name: 'AboutRedeploy',
-        mounted() {
+  // import {
+  //     EventBus
+  // } from '../../event-bus.js';
+  export default {
+    name: 'AboutRedeploy',
+    mounted() {
 
 
 
-        },
-    }
+    },
+  }
+
 </script>
 
 <style>
-    .about-redeploy {
-        padding-bottom: 30px;
-        border-bottom: 1px solid #ddd;
-        margin-bottom: 20px;
-    }
+  .about-redeploy {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+
 </style>
